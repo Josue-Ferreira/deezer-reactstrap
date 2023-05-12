@@ -7,16 +7,16 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Container, Row, Col } from 'reactstrap';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [playList, setPlayList] = useState([]);
 
   return (
     <div>
-      <NavBar />
+      <NavBar playList={playList} setPlayList={setPlayList}/>
       <Container>
         <Row xs="4">
           {data.map((album) => (
-            <Col className="bg-light border">
-              <Album key={album.title_short} album={album}/>
+            <Col key={album.title_short} className="bg-light border">
+              <Album album={album} playList={playList} setPlayList={setPlayList}/>
             </Col>
           ))}
         </Row>

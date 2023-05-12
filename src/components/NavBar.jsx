@@ -2,7 +2,7 @@ import React from 'react';
 import { useState } from 'react';
 import {Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
 
-const NavBar = () => {
+const NavBar = ({playList, setPlayList}) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggle = () => setDropdownOpen((prevState) => !prevState);
@@ -32,10 +32,11 @@ const NavBar = () => {
                     </NavLink>
                 </NavItem>
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
-                    <DropdownToggle caret>PlayLists</DropdownToggle>
+                    <DropdownToggle caret>PlayList</DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem>Some Action</DropdownItem>
-                        <DropdownItem disabled>Action (disabled)</DropdownItem>
+                        {playList.map((album,i) => (
+                            <DropdownItem key={i}>{album.title_short}</DropdownItem>
+                        ))}
                     </DropdownMenu>
                 </Dropdown>
             </Nav>
