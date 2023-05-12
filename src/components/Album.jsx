@@ -29,9 +29,9 @@ const Album = ({album, playList, setPlayList}) => {
                 <Button onClick={() => setPlayList([...playList, album])}>
                     Add to Playlist
                 </Button>
-                    <video controls name="media" style={{padding: '10px', height: '10vh', width: '100%'}}>
+                    <audio controls name="media" style={{padding: '10px', height: '10vh', width: '100%'}}>
                         <source src={album.preview} type="audio/mpeg"/>
-                    </video>
+                    </audio>
             </CardBody>
         </Card>
     );

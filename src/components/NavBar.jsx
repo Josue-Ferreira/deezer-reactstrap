@@ -34,7 +34,7 @@ const NavBar = ({playList, setPlayList}) => {
                 </NavItem>
                 <Dropdown isOpen={dropdownOpen} toggle={toggle}>
                     <DropdownToggle caret>PlayList</DropdownToggle>
-                    <DropdownMenu>
+                    <DropdownMenu style={{minWidth: '20rem'}}>
                         {playList.map((album,i) => (
                             <DropdownItem 
                                 key={album.title_short} 
@@ -42,10 +42,10 @@ const NavBar = ({playList, setPlayList}) => {
                             >
                                     <img src={album.album.cover_small} alt="" />
                                     {album.title_short}
-                                    <FaTrashAlt 
-                                        onClick={() => setPlayList([...playList.filter(albumToSet => (albumToSet.id != album.id))])}
-                                        style={{padding: '3px'}}
-                                    />
+                                    <div onClick={() => setPlayList([...playList.filter(albumToSet => (albumToSet.id != album.id))])} 
+                                        style={{padding: '5px 10px'}}>
+                                        <FaTrashAlt style={{width: '1.2rem', height: '1.2rem'}} />
+                                    </div>
                             </DropdownItem>
                         ))}
                     </DropdownMenu>
