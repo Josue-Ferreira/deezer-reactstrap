@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState } from 'react';
 import {Nav, NavItem, NavLink, Dropdown, DropdownToggle, DropdownMenu, DropdownItem} from 'reactstrap'
+import { FaTrashAlt } from "react-icons/fa";
 
 const NavBar = ({playList, setPlayList}) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -35,7 +36,17 @@ const NavBar = ({playList, setPlayList}) => {
                     <DropdownToggle caret>PlayList</DropdownToggle>
                     <DropdownMenu>
                         {playList.map((album,i) => (
-                            <DropdownItem key={i}>{album.title_short}</DropdownItem>
+                            <DropdownItem 
+                                key={album.title_short} 
+                                style={{display: 'flex', justifyContent: 'space-between', alignItems: 'center'}}
+                            >
+                                    <img src={album.album.cover_small} alt="" />
+                                    {album.title_short}
+                                    <FaTrashAlt 
+                                        onClick={() => setPlayList([...playList.filter(albumToSet => (albumToSet.id != album.id))])}
+                                        style={{padding: '3px'}}
+                                    />
+                            </DropdownItem>
                         ))}
                     </DropdownMenu>
                 </Dropdown>
