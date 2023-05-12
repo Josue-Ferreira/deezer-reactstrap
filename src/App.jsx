@@ -15,7 +15,7 @@ function App() {
       <Container>
         <Row xs="4">
           {data.map((album) => (
-            <Col key={album.title_short} className="bg-light border">
+            <Col key={album.title_short}>
               <Album album={album} playList={playList} setPlayList={setPlayList}/>
             </Col>
           ))}
